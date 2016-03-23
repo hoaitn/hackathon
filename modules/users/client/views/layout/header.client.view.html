@@ -1,0 +1,57 @@
+<div class="user-navbar">
+    <div class="row">
+        <ul class="menu float-right user-navbar-menu" data-dropdown-foundation>
+            <li ng-repeat="item in menus.items | orderBy: 'position'" ng-if="item.shouldRender(user);" ng-switch="item.type" ng-class="{ active: $state.includes(item.state), dropdown: item.type === 'dropdown' }" class="{{item.class}}">
+                <a ng-switch-when="dropdown" role="button">{{::item.title}}&nbsp;<span class="caret"></span></a>
+                <ul ng-switch-when="dropdown" class="menu">
+                    <li ng-repeat="subitem in item.items | orderBy: 'position'" ng-if="subitem.shouldRender(user);" ui-sref-active="active">
+                        <a ui-sref="{{subitem.state}}" ng-bind="subitem.title"></a>
+                    </li>
+                </ul>
+                <a ng-switch-default ui-sref="{{item.state}}" ng-bind="item.title"></a>
+            </li>
+            <li>
+                <a href="/api/auth/signout" target="_self">Signout</a>
+            </li>
+            <li class="relative" click-outside="clickOut()" ng-if="user.isAdmin">
+                <a role="button" ng-click="getListActive()" class="relative">
+                    <span class="text-notif">
+                            <i class="icon fa fa-globe"></i>                            
+                        </span>
+                    <span class="notif-count" ng-if="totalNotice>0" ng-bind="totalNotice">0</span>
+                </a>
+                <div class="page-notification" data-ng-class="{'active': toggleNotify}">
+                    <div class="in-notif">
+                        <loading class="loading-notif" type="loading" ng-if="loading"></loading>
+                        <perfect-scrollbar class="notif-scroller" wheel-propagation="true" wheel-speed="10" min-scrollbar-length="20">
+                            <ul class="connection-company-list" class="display-flex flex-column" ng-if="!loading">
+                                <li ng-repeat="item in listNotValid" class="display-flex">
+                                    <div class="company-avatar">
+                                        <a ui-sref="home">
+                                            <img class="company-profile-image" ng-src="{{item.profileImageURL}}">
+                                        </a>
+                                    </div>
+                                    <div class="connection-company-info flex">
+                                        <h5 class="company-headline">
+                                                <a ng-bind="item.displayName">User</a>
+                                            </h5>
+                                        <h6 class="company-secondary-headline" ng-bind="item.description">Description</h6>
+                                    </div>
+                                    <span role="button" ng-click="accept(item)" class="color-success" style="margin-right: 8px;"><i class="fa fa-check"></i></span>
+                                    <span role="button" ng-click="remove(item)" class="color-alert"><i class="fa fa-trash"></i></span>
+                                </li>
+                            </ul>
+                        </perfect-scrollbar>
+                    </div>
+                </div>
+            </li>
+
+            <li ng-if="user">
+                <a role="button" ui-sref="settings.profile">
+                    <img ng-src="{{user.profileImageURL}}" alt="{{user.displayName}}" class="header-profile-image" />
+                    <span ng-bind="user.displayName"></span> <b class="caret"></b>
+                </a>
+            </li>            
+        </ul>
+    </div>
+</div>

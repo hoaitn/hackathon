@@ -1,0 +1,200 @@
+<form name="vm.form.tab4Form" class="form-horizontal"
+      ng-submit="vm.saveTab(vm.form.tab4Form.$valid)" novalidate>
+    <div class="session-box">
+
+        <!--Judging-->
+        <div class="box-content">
+            <h4>Judging</h4>
+
+            <div class="row">
+                <div class="small-2 columns">
+                    <label class="text-right middle">Judging Type</label>
+                </div>
+                <div class="small-6 end columns">
+                    <input type="radio" class="middle" name="judging_type"
+                           ng-model="vm.hackathon.judging.type" value="1"
+                           id="online">
+                    <label class="middle" for="online">Online</label>
+                    <input type="radio" class="middle" name="judging_type"
+                           ng-model="vm.hackathon.judging.type" value="0"
+                           id="offline">
+                    <label class="middle" for="offline">Offline</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="small-2 columns">
+                    <label class="text-right middle">Judging Period</label>
+                </div>
+                <div class="small-3 columns">
+                    <div class="row">
+                        <div class="small-3 columns">
+                            <label for="judging_from_date" class="text-right middle">From</label>
+                        </div>
+                        <div class="small-9 columns">
+                            <div class="input-group">
+                                <input id="judging_from_date" name="judging_from_date" type="text" class="form-control" uib-datepicker-popup="yyyy-MM-dd" ng-model="vm.hackathon.judging.from_date" is-open="vm.popup1.opened" datepicker-options="dateOptions" close-text="Close" alt-input-formats="altInputFormats"/>
+                              <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="vm.open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                              </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="small-3 columns end">
+                    <div class="row">
+                        <div class="small-3 columns">
+                            <label for="judging_to_date" class="text-right middle">To</label>
+                        </div>
+                        <div class="small-9 columns">
+                            <p class="input-group">
+                                <input id="judging_to_date" name="judging_to_date" type="text" class="form-control"
+                                       uib-datepicker-popup="yyyy-MM-dd"
+                                       ng-model="vm.hackathon.judging.to_date"
+                                       is-open="vm.popup2.opened" datepicker-options="dateOptions"
+                                       close-text="Close" alt-input-formats="altInputFormats"/>
+                              <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="vm.open2()"><i
+                                        class="glyphicon glyphicon-calendar"></i></button>
+                              </span>
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="small-2 columns">
+                    <label class="text-right middle">Judging Criterias</label>
+                </div>
+                <div class="small-6 end columns">
+                    <textarea name="judging_criterias" cols="30" rows="10"
+                              data-ng-model="vm.hackathon.judging.criterias"
+                              placeholder="Enter your Criterias here...">{{vm.hackathon.judging.criterias}}</textarea>
+                </div>
+            </div>
+        </div>
+
+        <!--Challenges-->
+        <div class="box-content">
+            <h4>Challenges</h4>
+            <!-- <div class="row hidden">
+                <div class="small-2 columns">
+                    <label class="text-right middle">Add Theme</label>
+                </div>
+                <div class="small-6 end columns">
+                    <input class="middle" type="file" nv-file-select uploader="vm.uploader"/><br/>
+                    <ul>
+                        <li ng-repeat="item in vm.uploader.queue">
+                            Name: <span ng-bind="item.file.name"></span><br/>
+                            <button ng-click="item.upload()">upload</button>
+                        </li>
+                    </ul>
+                </div>
+            </div> -->
+
+            <div class="row">
+                <div class="small-2 columns">
+                    <label class="text-right middle">Relevant Information</label>
+                </div>
+                <div class="small-6 end columns">
+                    <textarea name="relevant_information" cols="30" rows="10"
+                              ng-model="vm.hackathon.challenges.relevant_information"
+                              id="relevantInformation"
+                              placeholder="Enter your information here...">{{vm.hackathon.challenges.relevant_information}}</textarea>
+                </div>
+            </div>
+        </div>
+
+        <!--Prizes-->
+        <div class="box-content">
+            <h4>Prizes</h4>
+
+            <div class="row">
+                <div class="small-2 columns">
+                    <label class="text-right middle">Winner announce date</label>
+                </div>
+                <div class="small-3 end columns">
+                    <div class="input-group">
+                        <input name="winner_date" type="text" class="form-control" uib-datepicker-popup ng-model="vm.hackathon.prizes.winner_date" is-open="vm.winner_date_open" close-text="Close"/>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="vm.winner_date_open = !vm.winner_date_open"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="columns">
+                    <p>Price Information</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="small-2 columns">
+                    <label class="text-right middle">Name</label>
+                </div>
+                <div class="small-6 columns end">
+                    <input type="text" ng-model="vm.hackathon.prizes.name"
+                           value="vm.hackathon.prizes.name"/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="small-2 columns">
+                    <label class="text-right middle">Value</label>
+                </div>
+                <div class="small-4 columns">
+                    <input type="text" ng-model="vm.hackathon.prizes.value"
+                           value="vm.hackathon.prizes.value"/>
+                </div>
+                <div class="small-2 columns end">
+                    <select name="">
+                        <option value="1">USD</option>
+                        <option value="0">AAA</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="small-2 columns">
+                    <label class="text-right middle">Number of winners</label>
+                </div>
+                <div class="small-6 columns end">
+                    <input type="text" ng-model="vm.hackathon.prizes.number_winner"
+                           value="vm.hackathon.prizes.number_winner"/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="small-2 columns">
+                    <label class="text-right middle">Description</label>
+                </div>
+                <div class="small-6 end columns">
+                    <textarea name="" cols="30" rows="10"
+                              ng-model="vm.hackathon.prizes.description"
+                              placeholder="Enter your description here...">
+                        {{vm.hackathon.prizes.description?vm.hackathon.prizes.description : ''}}
+                    </textarea>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="small-2 columns">
+                    <label class="text-right middle">Given by</label>
+                </div>
+                <div class="small-6 columns end">
+                    <input type="text" ng-model="vm.hackathon.prizes.given_by"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix" style="margin-top: 10px">
+            <div class="button-group small float-right">
+                <a class="button secondary">Cancel</a>
+                <button type="submit" class="button">Save Changes</button>
+            </div>
+        </div>
+    </div>
+</form>

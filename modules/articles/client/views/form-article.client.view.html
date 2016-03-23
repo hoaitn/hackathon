@@ -1,0 +1,34 @@
+<section>
+    <div class="page-header">
+        <h1>{{vm.article._id ? 'Edit Article' : 'New Article'}}</h1>
+    </div>
+    <div class="col-md-12">
+        <form name="vm.form.articleForm" class="form-horizontal" ng-submit="vm.save(vm.form.articleForm.$valid)" novalidate>
+            <fieldset>
+                <div class="form-group" show-errors>
+                    <label class="control-label" for="title">Title</label>
+                    <input name="title" type="text" ng-model="vm.article.title" id="title" class="form-control" placeholder="Title" required>
+                    <div ng-messages="vm.form.articleForm.title.$error" role="alert">
+                        <p class="help-block error-text" ng-message="required">Article title is required.</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="content">Content</label>
+                    <div text-angular ta-text-editor-setup='vm.textAreaSetup' data-ng-model="vm.article.content" placeholder="Content"></div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Select Tag</label>                    
+                    <tags-input ng-model="vm.article.tags" display-property="name" add-from-autocomplete-only="true">
+                        <auto-complete source="vm.tags" display-property="name" min-length="1" load-on-focus="true"></auto-complete>
+                    </tags-input>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="button primary">{{vm.article._id ? 'Update' : 'Create'}}</button>
+                </div>
+                <div ng-show="vm.error" class="text-danger">
+                    <strong ng-bind="vm.error"></strong>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</section>

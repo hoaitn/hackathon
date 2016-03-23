@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="box-section row" style="margin-top: 50px">
+        <div class="clearfix">
+            <a ui-sref="hackathons.create" class="button float-right">Create New Hackathon</a>
+        </div>
+        <div class="page-header">
+            <h1>List My Hackthons</h1>
+        </div>
+        <div class="list-group">
+            <div class="media" ng-repeat="hackathon in vm.hackathons">
+                <div class="media-left media-middle" style="min-width: 120px">
+                    <a href="#">                        
+                        <img class="media-object" ng-src="{{hackathon.imageLogoURL}}">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading" ><a ui-sref="hackathons.view({ hackathonId: hackathon._id })" ng-bind="hackathon.name"></a></h4>
+                    <em class="list-group-item-text">
+                        Create on <span ng-bind="hackathon.createdAt | date:'mediumDate'"></span>by <span ng-if="hackathon.user" ng-bind="hackathon.user.displayName"></span>                    
+                    </em>
+                    <div ng-bind-html="hackathon.content"></div>
+                </div>
+            </div>
+        </div>
+        <p>{{vm.hackathons.$resolved}}</p>
+        <div class="alert alert-warning text-center" ng-if="vm.hackathons.$resolved && !vm.hackathons.length">
+            No hackathon yet, why don't you <a ui-sref="hackathons.create">create one</a>?
+        </div>
+    </div>
+</div>

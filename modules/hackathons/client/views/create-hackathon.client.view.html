@@ -1,0 +1,72 @@
+<div class="create-hackathon">
+    <div class="row">
+        <h4 ng-if="hackathonsCtr.hackathon._id">
+            Update "{{hackathonsCtr.hackathon.name}}"
+        </h4>
+        <h4 ng-if="!hackathonsCtr.hackathon._id">
+            New Hackathon
+        </h4>
+        <!-- <ul class="tabs" data-tabs id="hackathon-tabs" tabs-foundation>
+            <li class="tabs-title is-active">
+                <a href="#newhackcathon1" aria-selected="true">Tab 1</a>
+            </li>
+            <li class="tabs-title"><a href="#newhackcathon2">Tab 2</a></li>
+            <li class="tabs-title"><a href="#newhackcathon3">Tab 3</a></li>
+            <li class="tabs-title"><a href="#newhackcathon4">Tab 4</a></li>
+            <li class="tabs-title"><a href="#newhackcathon5">Tab 5</a></li>
+            <li class="tabs-title"><a href="#newhackcathon6">Tab 6</a></li>
+        </ul> -->
+        <uib-tabset class="tabs-hackathon">
+            <uib-tab index="0" heading="Tab 1">                
+                <div class="tab-content">
+                    <div ui-view="tab-1"></div>                
+                </div>
+            </uib-tab>
+            <uib-tab index="1" heading="Tab 2" disable="hackathonsCtr.tabDisable">
+                <div class="tab-content">
+                    <div ui-view="tab-2"></div>                
+                </div>
+            </uib-tab>
+            <uib-tab index="2" heading="Tab 3" disable="hackathonsCtr.tabDisable">                
+                <div class="tab-content">
+                    <div ui-view="tab-3"></div>                
+                </div>
+            </uib-tab>
+            <uib-tab index="3" heading="Tab 4" disable="hackathonsCtr.tabDisable">                
+                <div class="tab-content">
+                    <div ui-view="tab-4"></div>                
+                </div>
+            </uib-tab>
+            <uib-tab select="hackathonsCtr.renderCalendar('scheduler')" index="4" heading="Tab 5" disable="hackathonsCtr.tabDisable">
+                <div class="tab-content">
+                    <div ui-view="tab-5"></div>                
+                </div>
+            </uib-tab>
+            <uib-tab index="5" heading="Tab 6" disable="hackathonsCtr.tabDisable">                
+                <div class="tab-content">
+                    <div ui-view="tab-6"></div>                
+                </div>
+            </uib-tab>
+        </uib-tabset>
+        <!-- <div class="tabs-content" data-tabs-content="hackathon-tabs">
+            <div class="tabs-panel is-active" id="newhackcathon1">
+                <div ui-view="tab-1"></div>
+            </div>
+            <div class="tabs-panel" ng-disable="true" id="newhackcathon2">
+                <div ui-view="tab-2"></div>
+            </div>
+            <div class="tabs-panel" id="newhackcathon3">
+                <div ui-view="tab-3"></div>
+            </div>
+            <div class="tabs-panel" id="newhackcathon4">
+                <div ui-view="tab-4"></div>
+            </div>
+            <div class="tabs-panel" id="newhackcathon5">
+                <div ui-view="tab-5"></div>
+            </div>
+            <div class="tabs-panel" id="newhackcathon6">
+                <div ui-view="tab-6"></div>
+            </div>
+        </div> -->
+    </div>
+</div>

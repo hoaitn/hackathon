@@ -1,0 +1,596 @@
+<div class="container">
+    <section class="row">
+        <div class="page-header">
+            <h1 ng-bind="vm.hackathon.name"></h1>
+            <p>{{ vm.hackathon.content }}</p>
+        </div>
+        <div class="pull-right" ng-if="vm.hackathon.isCurrentUserOwner">
+            <a class="button primary" ui-sref="hackathons.edit({ hackathonId: vm.hackathon._id })">
+                <i class="fa fa-edit"></i>
+            </a>
+            <a class="button alert" ng-click="vm.remove()">
+                <i class="fa fa-trash"></i>
+            </a>
+        </div>
+        <small>
+            <em class="text-muted">
+                Create on
+                <span ng-bind="vm.hackathon.created | date:'mediumDate'"></span>
+                by
+                <span ng-bind="vm.hackathon.user.displayName"></span>            
+            </em>
+        </small>
+        <p class="lead" ng-bind-html="vm.hackathon.content"></p>
+    </section>
+    <div class="row">
+        <uib-tabset class="tabs-hackathon">
+            <uib-tab index="0" heading="Tab 1">
+                <div class="tab-content">
+                    <div class="row">
+                        <div class="small-2 columns">
+                            <label for="name" class="text-right middle">Name</label>
+                        </div>
+                        <div class="small-6 columns form-group end">
+                            <input type="text" name="name" id="name" ng-model="vm.hackathon.name" placeholder="Enter your name here ...">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-2 columns">
+                            <label for="tagline" class="text-right middle">Tagline</label>
+                        </div>
+                        <div class="small-6 columns form-group end">
+                            <input type="text" name="tagline" id="tagline" ng-model="vm.hackathon.tagline">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-2 columns">
+                            <label for="url" class="text-right middle">Url</label>
+                        </div>
+                        <div class="small-6 columns form-group end">
+                            <input type="url" name="url" id="url" ng-model="vm.hackathon.url" placeholder="http:\\...">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-2 columns">
+                            <label for="contact_email" class="text-right middle">Contact Email</label>
+                        </div>
+                        <div class="small-6 columns form-group end">
+                            <input type="email" name="contact_email" id="contact_email" ng-model="vm.hackathon.contact_email" placeholder="Enter Email...">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-2 columns">
+                            <label class="text-right middle">Time Zone</label>
+                        </div>
+                        <div class="small-6 columns form-group end">
+                            <label>
+                                <select name="time_zone" ng-model="vm.hackathon.time_zone">
+                                    <option value="">Select Time zone</option>
+                                    <option value="husker">(UTC + 7:00) Bangkok, Ha Noi, Jakarta</option>
+                                    <option value="starbuck">Starbuck</option>
+                                    <option value="hotdog">Hot Dog</option>
+                                    <option value="apollo">Apollo</option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-2 columns">
+                            <label for="location_name" class="text-right middle">Location Name</label>
+                        </div>
+                        <div class="small-6 end columns form-group">
+                            <input type="text" name="location_name" id="location_name" ng-model="vm.hackathon.location_name">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-2 columns">
+                            <label for="address" class="text-right middle">Address</label>
+                        </div>
+                        <div class="small-6 end columns form-group">
+                            <input type="text" id="address" name="address" ng-model="vm.hackathon.address">
+                        </div>
+                    </div>
+                </div>
+            </uib-tab>
+            <uib-tab index="1" heading="Tab 2">
+                <div class="tab-content">
+                    <div class="session-box box-design">
+                        <h3 class="">DESIGN</h3>
+                        <div class="box-content">
+                            <div class="row">
+                                <div class="small-2 columns">
+                                    <div class="text-right middle">Thumbnail Image</div>
+                                </div>
+                                <div class="small-3 columns">
+                                    <img class="thumbnail" ng-src="{{vm.hackathon.hackathonThumb}}">
+                                </div>
+                                <div class="small-7 columns"></div>
+                            </div>
+                            <div class="row">
+                                <div class="small-2 columns">
+                                    <div class="text-right middle">Header</div>
+                                </div>
+                                <div class="small-3 columns">
+                                    <img class="thumbnail" ng-src="{{vm.hackathon.imageHeaderURL}}">
+                                </div>
+                                <div class="small-7 columns"></div>
+                            </div>
+                            <div class="row">
+                                <div class="small-2 columns">
+                                    <div class="text-right middle">Logo</div>
+                                </div>
+                                <div class="small-3 columns">
+                                    <img class="thumbnail" ng-src="{{vm.hackathon.imageLogoURL}}">
+                                </div>
+                                <div class="small-7 columns"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="session-box box-design">
+                        <h3 class="">GENERAL INFORMATION</h3>
+                        <!--Extra information about hackathon-->
+                        <div class="box-content">
+                            <h4>Extra information about hackathon</h4>
+                            <div class="row">
+                                <div class="small-2 columns">
+                                    <div class="text-left">Description</div>
+                                </div>
+                                <div class="small-6 end columns">
+                                    <div text-angular placeholder="Content" name="description" ng-model="vm.hackathon.description"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Video and Image-->
+                        <div class="box-content">
+                            <h4>Video and Image</h4>
+                            <div class="row">
+                                <div class="small-2 columns">
+                                    <label class="text-right middle">Embed video code</label>
+                                </div>
+                                <div class="small-6 end columns">
+                                    <input type="text" ng-model="vm.hackathon.embed_video" id="embed_video" name="embed_video" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="small-2 columns">
+                                    <label class="text-right middle">Embed image code</label>
+                                </div>
+                                <div class="small-6 end columns">
+                                    <input type="text" ng-model="vm.hackathon.embed_image" name="embed_image" />
+                                </div>
+                            </div>
+                        </div>
+                        <!--Sponsors-->
+                        <div class="box-content">
+                            <h4>Sponsors</h4>
+                            <div class="row">
+                                <div class="small-2 columns">
+                                    <label class="text-right middle">Name</label>
+                                </div>
+                                <div class="small-6 end columns">
+                                    <input type="text" placeholder="Enter your sponsor's name here..." ng-model="vm.hackathon.sponsors_name" name="sponsors_name" />
+                                </div>
+                            </div>
+                        </div>
+                        <!--Add New FAQ-->
+                        <div class="box-content">
+                            <h4>Add New FAQ</h4>
+                            <input type="text" name="faqs" class="hidden" id="faqs" data-ng-model="vm.hackathon.faqs" />
+                            <div class="parent-faq" data-ng-repeat="faq in vm.hackathon.faqs track by $index">
+                                <div class="row">
+                                    <div class="small-2 columns">
+                                        <label class="text-right middle">Question</label>
+                                    </div>
+                                    <div class="small-6 end columns">
+                                        <input type="text" placeholder="" data-ng-model="vm.hackathon.faqs[$index].question" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="small-2 columns">
+                                        <label class="text-right middle">Answer</label>
+                                    </div>
+                                    <div class="small-6 end columns">
+                                        <textarea placeholder="Enter your answer here..." data-ng-model="vm.hackathon.faqs[$index].answer"></textarea>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="small-2 columns">
+                                        <label class="text-right middle">Status</label>
+                                    </div>
+                                    <div class="small-6 columns">
+                                        <label>
+                                            <select name="faq-{{vm.hackathon.faqs[$index].id}}" data-ng-model="vm.hackathon.faqs[$index].status">
+                                                <option value="1" ng-selected="vm.hackathon.faqs[$index].status == 1">Enable</option>
+                                                <option value="0" ng-selected="vm.hackathon.faqs[$index].status == 0">Disable</option>
+                                            </select>
+                                        </label>
+                                    </div>
+                                    <div class="small-2 end columns">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Add New Rules-->
+                        <div class="box-content">
+                            <h4>Add New Rules</h4>
+                            <input type="text" name="rules" class="hidden" id="rules" data-ng-model="vm.hackathon.rules" />
+                            <div class="parent-rule" data-ng-repeat="rule in vm.hackathon.rules track by $index">
+                                <div class="row">
+                                    <div class="small-2 columns">
+                                        <label class="text-right middle">Name Of Rule</label>
+                                    </div>
+                                    <div class="small-6 end columns">
+                                        <input type="text" placeholder="" data-ng-model="vm.hackathon.rules[$index].name" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="small-2 columns">
+                                        <label class="text-right middle">Description</label>
+                                    </div>
+                                    <div class="small-6 end columns">
+                                        <textarea placeholder="Enter your answer here..." data-ng-model="vm.hackathon.rules[$index].description"></textarea>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="small-2 columns">
+                                        <label class="text-right middle">Status</label>
+                                    </div>
+                                    <div class="small-6 columns">
+                                        <label>
+                                            <select name="faq-{{vm.hackathon.rules[$index].id}}" data-ng-model="vm.hackathon.rules[$index].status">
+                                                <option value="1" ng-selected="vm.hackathon.rules[$index].status == 1">Enable</option>
+                                                <option value="0" ng-selected="vm.hackathon.rules[$index].status == 0">Disable</option>
+                                            </select>
+                                        </label>
+                                    </div>
+                                    <div class="small-2 end columns">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </uib-tab>
+            <uib-tab index="2" heading="Tab 3">
+                <div class="tab-content">
+                    <div class="session-box box-design">
+                        <h3 class="">SUBMISSIONS</h3>
+                        <!--Eligibility-->
+                        <div class="box-content">
+                            <h4>Eligibility</h4>
+                            <div class="row">
+                                <div class="small-2 columns">
+                                    <div class="text-left">Who can participate</div>
+                                </div>
+                                <div class="small-6 end columns">
+                                    <label ng-repeat="item in vm.submissions.eligibility">
+                                        <select ng-model="item.value" ng-options="en.id as en.name for en in eligibility"></select>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Submission requirements-->
+                        <div class="box-content">
+                            <h4>Submission requirements</h4>
+                            <div class="row">
+                                <div class="small-2 columns">
+                                    <label class="text-right middle">Requirement</label>
+                                </div>
+                                <div class="small-6 end columns">
+                                    <textarea ng-model="vm.submissions.requirement" id="" cols="30" rows="10" placeholder="Enter your requirement here..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Registration-->
+                        <div class="box-content">
+                            <h4>Registration</h4>
+                            <div class="row">
+                                <div class="small-2 columns">
+                                    <label class="text-right middle">Registration Free</label>
+                                </div>
+                                <div class="small-4 columns">
+                                    <input type="text" ng-model="vm.submissions.registration.free" placeholder="" />
+                                </div>
+                                <div class="small-2 columns end">
+                                    <label>
+                                        <select ng-model="vm.submissions.registration.value">
+                                            <option ng-value="1" ng-selected="vm.submissions.registration.value">USD</option>
+                                            <option ng-value="2" ng-selected="vm.submissions.registration.value">GBP</option>
+                                        </select>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="small-2 columns">
+                                    <label class="text-right middle">Registration Free</label>
+                                </div>
+                                <div class="small-6 end columns end">
+                                    <div class="small button-group">
+                                        <a class="button">Paypal</a>
+                                        <a class="button">Visa</a>
+                                        <a class="button">Master Card</a>
+                                        <a class="button">Stripe</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="small-2 columns">
+                                    <label class="text-right middle">Ticket Type</label>
+                                </div>
+                                <div class="small-6 end columns end">
+                                    <select ng-model="vm.submissions.registration.ticketType">
+                                        <option ng-value="1" ng-selected="vm.submissions.registration.ticketType">Option 1</option>
+                                        <option ng-value="2" ng-selected="vm.submissions.registration.ticketType">Option 2</option>
+                                        <option ng-value="3" ng-selected="vm.submissions.registration.ticketType">Option 3</option>
+                                        <option ng-value="4" ng-selected="vm.submissions.registration.ticketType">Option 4</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="small-2 columns">
+                                    <label class="text-right middle">Period</label>
+                                </div>
+                                <div class="small-3 columns">
+                                    <div class="row">
+                                        <div class="small-3 columns">
+                                            <label for="from_date" class="text-right middle">From</label>
+                                        </div>
+                                        <div class="small-9 columns">
+                                            <input class="input-group-field" type="text" ng-model="vm.submissions.registration.period.from" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="small-3 columns end">
+                                    <div class="row">
+                                        <div class="small-3 columns">
+                                            <label for="to_date" class="text-right middle">To</label>
+                                        </div>
+                                        <div class="small-9 columns">
+                                            <input class="input-group-field" type="text" ng-model="vm.submissions.registration.period.to" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Project Submission-->
+                        <div class="box-content">
+                            <h4>Project Submission</h4>
+                            <div class="row">
+                                <div class="small-2 columns">
+                                    <label class="text-right middle">Submit idea/project</label>
+                                </div>
+                                <div class="small-6 end columns">
+                                    <input type="radio" class="middle" ng-checked="vm.submissions.projectSubmission.submitIdea == true" name="submit_idea">
+                                    <label class="middle" for="submitYes">Yes</label>
+                                    <input type="radio" class="middle" ng-checked="vm.submissions.projectSubmission.submitIdea == false" name="submit_idea">
+                                    <label class="middle" for="submitNo">No</label>
+                                </div>
+                            </div>
+                            <div class="row" ng-if="vm.submissions.projectSubmission.submitIdea">
+                                <div class="small-2 columns">
+                                    <label class="text-right middle">Submission Requirements</label>
+                                </div>
+                                <div class="small-6 end columns">
+                                    <textarea ng-model="vm.submissions.projectSubmission.requirement" cols="30" rows="10" placeholder="Enter your requirement here..."></textarea>
+                                </div>
+                            </div>
+                            <div class="row" ng-if="vm.submissions.projectSubmission.submitIdea">
+                                <div class="small-2 columns">
+                                    <label class="text-right middle">Period</label>
+                                </div>
+                                <div class="small-3 columns">
+                                    <div class="row">
+                                        <div class="small-3 columns">
+                                            <label for="period_from_date" class="text-right middle">From</label>
+                                        </div>
+                                        <div class="small-9 columns">
+                                            <div class="input-group">
+                                                <input class="input-group-field" type="text" ng-model="vm.submissions.projectSubmission.period.from" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="small-3 columns end">
+                                    <div class="row">
+                                        <div class="small-3 columns">
+                                            <label for="period_to_date" class="text-right middle">To</label>
+                                        </div>
+                                        <div class="small-9 columns">
+                                            <input class="input-group-field" type="text" ng-model="vm.submissions.projectSubmission.period.to" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" ng-if="vm.submissions.projectSubmission.submitIdea">
+                                <div class="small-2 columns">
+                                    <label class="text-right middle">Possibility to upload project</label>
+                                </div>
+                                <div class="small-6 end columns">
+                                    <label>
+                                        <select name="time_zone" ng-model="vm.submissions.projectSubmission.possibility">
+                                            <option>Select status</option>
+                                            <option ng-value="1" ng-selected="vm.submissions.projectSubmission.possibility">Enable</option>
+                                            <option ng-value="2" ng-selected="vm.submissions.projectSubmission.possibility">Disable</option>
+                                        </select>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </uib-tab>
+            <uib-tab index="3" heading="Tab 4" disable="vm.tabDisable">
+                <div class="tab-content">
+                    <div class="session-box">
+                        <!--Judging-->
+                        <div class="box-content">
+                            <h4>Judging</h4>
+                            <div class="row">
+                                <div class="small-2 columns">
+                                    <label class="text-right middle">Judging Type</label>
+                                </div>
+                                <div class="small-6 end columns">
+                                    <input type="radio" class="middle" name="judging_type" ng-model="vm.hackathon.judging.type" value="1" id="online">
+                                    <label class="middle" for="online">Online</label>
+                                    <input type="radio" class="middle" name="judging_type" ng-model="vm.hackathon.judging.type" value="0" id="offline">
+                                    <label class="middle" for="offline">Offline</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="small-2 columns">
+                                    <label class="text-right middle">Judging Period</label>
+                                </div>
+                                <div class="small-3 columns">
+                                    <div class="row">
+                                        <div class="small-3 columns">
+                                            <label for="judging_from_date" class="text-right middle">From</label>
+                                        </div>
+                                        <div class="small-9 columns">
+                                            <input id="judging_from_date" name="judging_from_date" type="text" class="form-control" uib-datepicker-popup="yyyy-MM-dd" ng-model="vm.hackathon.judging.from_date" is-open="vm.popup1.opened" datepicker-options="dateOptions" close-text="Close" alt-input-formats="altInputFormats" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="small-3 columns end">
+                                    <div class="row">
+                                        <div class="small-3 columns">
+                                            <label for="judging_to_date" class="text-right middle">To</label>
+                                        </div>
+                                        <div class="small-9 columns">
+                                            <input id="judging_to_date" name="judging_to_date" type="text" class="form-control" uib-datepicker-popup="yyyy-MM-dd" ng-model="vm.hackathon.judging.to_date" is-open="vm.popup2.opened" datepicker-options="dateOptions" close-text="Close" alt-input-formats="altInputFormats" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="small-2 columns">
+                                    <label class="text-right middle">Judging Criterias</label>
+                                </div>
+                                <div class="small-6 end columns">
+                                    <textarea name="judging_criterias" cols="30" rows="10" data-ng-model="vm.hackathon.judging.criterias" placeholder="Enter your Criterias here...">{{vm.hackathon.judging.criterias}}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Challenges-->
+                        <div class="box-content">
+                            <h4>Challenges</h4>
+                            <div class="row">
+                                <div class="small-2 columns">
+                                    <label class="text-right middle">Relevant Information</label>
+                                </div>
+                                <div class="small-6 end columns">
+                                    <textarea name="relevant_information" cols="30" rows="10" ng-model="vm.hackathon.challenges.relevant_information" id="relevantInformation" placeholder="Enter your information here...">{{vm.hackathon.challenges.relevant_information}}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Prizes-->
+                        <div class="box-content">
+                            <h4>Prizes</h4>
+                            <div class="row">
+                                <div class="small-2 columns">
+                                    <label class="text-right middle">Winner announce date</label>
+                                </div>
+                                <div class="small-3 end columns">
+                                    <input type="date" id="winner_date" name="winner_date" value="vm.hackathon.prizes.winner_date" ng-model="vm.hackathon.prizes.winner_date" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="columns">
+                                    <p>Price Information</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="small-2 columns">
+                                    <label class="text-right middle">Name</label>
+                                </div>
+                                <div class="small-6 columns end">
+                                    <input type="text" ng-model="vm.hackathon.prizes.name" value="vm.hackathon.prizes.name" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="small-2 columns">
+                                    <label class="text-right middle">Value</label>
+                                </div>
+                                <div class="small-4 columns">
+                                    <input type="text" ng-model="vm.hackathon.prizes.value" value="vm.hackathon.prizes.value" />
+                                </div>
+                                <div class="small-2 columns end">
+                                    <select name="">
+                                        <option value="1">USD</option>
+                                        <option value="0">AAA</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="small-2 columns">
+                                    <label class="text-right middle">Number of winners</label>
+                                </div>
+                                <div class="small-6 columns end">
+                                    <input type="text" ng-model="vm.hackathon.prizes.number_winner" value="vm.hackathon.prizes.number_winner" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="small-2 columns">
+                                    <label class="text-right middle">Description</label>
+                                </div>
+                                <div class="small-6 end columns">
+                                    <textarea name="" cols="30" rows="10" ng-model="vm.hackathon.prizes.description" placeholder="Enter your description here...">
+                                        {{vm.hackathon.prizes.description?vm.hackathon.prizes.description : ''}}
+                                    </textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="small-2 columns">
+                                    <label class="text-right middle">Given by</label>
+                                </div>
+                                <div class="small-6 columns end">
+                                    <input type="text" ng-model="vm.hackathon.prizes.given_by" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </uib-tab>
+            <uib-tab select="vm.renderCalendar('scheduler')" index="4" heading="Tab 5">
+                <div class="tab-content">
+                    <ul>
+                        <li ng-repeat="item in vm.schedulers">
+                            <div>{{item.title}}</div>
+                            <span>{{item.start | date:short}} - {{item.end | date:short}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </uib-tab>
+            <uib-tab index="5" heading="Tab 6" disable="vm.tabDisable">
+                <div class="tab-content">
+                    <div class="session-box">
+                        <h3>INVITE USERS TO HACKATHON</h3>
+                        <!--User 1-->
+                        <div class="box-content">
+                            <h4>User 1</h4>
+                            <div class="row">
+                                <div class="small-2 columns">
+                                    <label class="text-right middle">Name</label>
+                                </div>
+                                <div class="small-6 end columns">
+                                    <input type="text" placeholder="Enter name..." />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <ul class="list-member">
+                                    <li ng-repeat="item in vm.members" class="display-flex">
+                                        <div class="user-avatar">
+                                            <img src="{{item.user.profileImageURL}}" alt="{{item.user.displayName}}">
+                                        </div>
+                                        <div flex>
+                                            <strong ng-bind="item.user.displayName"></strong>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </uib-tab>
+        </uib-tabset>
+    </div>
+</div>

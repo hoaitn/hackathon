@@ -1,0 +1,19 @@
+.scheduler-window-class {
+  max-width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15); }
+
+.custom-time-picker td {
+  padding: 0; }
+
+.custom-time-picker input {
+  margin: 0 auto;
+  height: 25px; }
+
+.custom-time-picker .btn {
+  line-height: 15px;
+  padding: 5px; }

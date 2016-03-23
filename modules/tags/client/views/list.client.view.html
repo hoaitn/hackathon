@@ -1,0 +1,18 @@
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Slug</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="item in tags">
+            <td><a ui-sref="tags.view({tagId: item._id})">{{item.name}}</a></td>
+            <td>{{item.slug}}</td>
+            <td class="text-right">
+                <button type="button" class="btn btn-danger" data-ng-click="remove(item)"><i class="fa fa-trash"></i></button>
+            </td>
+        </tr>
+    </tbody>
+</table>

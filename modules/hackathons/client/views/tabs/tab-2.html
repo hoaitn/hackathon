@@ -1,0 +1,236 @@
+<form name="vm.form.tab2Form" class="form-horizontal"
+      ng-submit="vm.saveTab(vm.form.tab2Form.$valid)" novalidate>
+        <div class="session-box box-design">
+            <h3 class="">DESIGN</h3>
+            <div class="box-content">
+                <div class="row">
+                    <div class="small-2 columns">
+                        <div class="text-right middle">Thumbnail Image</div>
+                    </div>
+                    <div class="small-3 columns">
+                        <input type="hidden" id="hackathonThumb" name="hackathonThumb" value="{{vm.hackathon.hackathonThumb}}"/>
+                        <img class="thumbnail" ng-src="{{vm.hackathon.hackathonThumb}}">
+                    </div>
+                    <div class="small-4 end columns">
+                        <div class="text-center form-group" ng-hide="vm.uploader.queue.length">
+                            <span class="button secondary btn-file" role="button"><i class="fa fa-camera"></i> &nbsp;
+                                Select Image <input type="file" nv-file-select uploader="vm.uploader" role="button">
+                            </span>
+                        </div>
+                        <div class="text-center form-group" ng-show="vm.uploader.queue.length">
+                            <button class="button primary" ng-click="vm.uploadProfilePicture();"><i
+                                    class="fa fa-upload"></i> &nbsp; Upload</button>
+                            <button class="button warning" ng-click="vm.cancelUpload();"><i
+                                    class="fa fa-trash"></i> &nbsp;Cancel</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-2 columns">
+                        <div class="text-right middle">Upload Header</div>
+                    </div>
+                    <div class="small-3 columns">
+                        <input type="hidden" id="imageHeaderURL" name="imageHeaderURL" value="{{vm.hackathon.imageHeaderURL}}"/>
+                        <img class="thumbnail" ng-src="{{vm.hackathon.imageHeaderURL}}">
+                    </div>
+                    <div class="small-4 end columns">
+                        <div class="text-center form-group" ng-hide="vm.uploaderHeaderImg.queue.length">
+                            <span class="button secondary btn-file" role="button"><i class="fa fa-camera"></i> &nbsp;
+                                Select Image <input type="file" nv-file-select uploader="vm.uploaderHeaderImg" role="button">
+                            </span>
+                        </div>
+                        <div class="text-center form-group" ng-show="vm.uploaderHeaderImg.queue.length">
+                            <button class="button primary" ng-click="vm.uploadHeaderPicture();"><i
+                                    class="fa fa-upload"></i> &nbsp; Upload</button>
+                            <button class="button warning" ng-click="vm.cancelHeaderUpload();"><i
+                                    class="fa fa-trash"></i> &nbsp;Cancel</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-2 columns">
+                        <div class="text-right middle">Upload Logo</div>
+                    </div>
+                    <div class="small-3 columns">
+                        <input type="hidden" id="imageLogoURL" name="imageLogoURL" value="{{vm.hackathon.imageLogoURL}}"/>
+                        <img class="thumbnail" ng-src="{{vm.hackathon.imageLogoURL}}">
+                    </div>
+                    <div class="small-4 end columns">
+                        <div class="text-center form-group" ng-hide="vm.uploaderLogo.queue.length">
+                            <span class="button secondary btn-file" role="button"><i class="fa fa-camera"></i> &nbsp;
+                                Select Image <input type="file" nv-file-select uploader="vm.uploaderLogo" role="button">
+                            </span>
+                        </div>
+                        <div class="text-center form-group" ng-show="vm.uploaderLogo.queue.length">
+                            <button class="button primary" ng-click="vm.uploadLogoPicture();"><i
+                                    class="fa fa-upload"></i> &nbsp; Upload</button>
+                            <button class="button warning" ng-click="vm.cancelUploadLogo();"><i
+                                    class="fa fa-trash"></i> &nbsp;Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="session-box box-design">
+            <h3 class="">GENERAL INFORMATION</h3>
+
+            <!--Extra information about hackathon-->
+            <div class="box-content">
+                <h4>Extra information about hackathon</h4>
+                <div class="row">
+                    <div class="small-2 columns">
+                        <div class="text-left">Description</div>
+                    </div>
+                    <div class="small-6 end columns">
+                        <div text-angular placeholder="Content" name="description"
+                             ng-model="vm.hackathon.description"></div>
+                        <!--<div class="clearfix" style="margin-top: 10px">
+                            <div class="button-group small float-right">
+                                <a class="button secondary">Cancel</a>
+                                <a class="button">Save</a>
+                            </div>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+
+            <!--Video and Image-->
+            <div class="box-content">
+                <h4>Video and Image</h4>
+                <div class="row">
+                    <div class="small-2 columns">
+                        <label class="text-right middle">Embed video code</label>
+                    </div>
+                    <div class="small-6 end columns">
+                        <input type="text" ng-model="vm.hackathon.embed_video" id="embed_video" name="embed_video" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-2 columns">
+                        <label class="text-right middle">Embed image code</label>
+                    </div>
+                    <div class="small-6 end columns">
+                        <input type="text" ng-model="vm.hackathon.embed_image" name="embed_image" />
+                    </div>
+                </div>
+            </div>
+
+            <!--Sponsors-->
+            <div class="box-content">
+                <h4>Sponsors</h4>
+                <div class="row">
+                    <div class="small-2 columns">
+                        <label class="text-right middle">Name</label>
+                    </div>
+                    <div class="small-6 end columns">
+                        <input type="text" placeholder="Enter your sponsor's name here..." ng-model="vm.hackathon.sponsors_name" name="sponsors_name"/>
+                    </div>
+                </div>
+            </div>
+
+            <!--Add New FAQ-->
+            <div class="box-content">
+                <h4>Add New FAQ</h4>
+                <input type="text" name="faqs" class="hidden" id="faqs" data-ng-model="vm.hackathon.faqs"/>
+                <div class="parent-faq" data-ng-repeat="faq in vm.hackathon.faqs track by $index">
+                    <div class="row">
+                        <div class="small-2 columns">
+                            <label class="text-right middle">Question</label>
+                        </div>
+                        <div class="small-6 end columns">
+                            <input type="text" placeholder="" data-ng-model="vm.hackathon.faqs[$index].question"/>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="small-2 columns">
+                            <label class="text-right middle">Answer</label>
+                        </div>
+                        <div class="small-6 end columns">
+                            <textarea placeholder="Enter your answer here..." data-ng-model="vm.hackathon.faqs[$index].answer"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-2 columns">
+                            <label class="text-right middle">Status</label>
+                        </div>
+                        <div class="small-6 columns">
+                            <label>
+                                <select name="faq-{{vm.hackathon.faqs[$index].id}}" data-ng-model="vm.hackathon.faqs[$index].status">
+                                    <option value="1" ng-selected="vm.hackathon.faqs[$index].status == 1">Enable</option>
+                                    <option value="0" ng-selected="vm.hackathon.faqs[$index].status == 0">Disable</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="small-2 end columns">
+                            <button type="button" class="button" data-ng-click="vm.removeFAQ(faq)">Remove
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class=" clearfix text-right">
+                    <button type="button" class="button" data-ng-click="vm.addMoreFAQ()">Add more
+                        FAQ</button>
+                </div>
+
+            </div>
+
+            <!--Add New Rules-->
+            <div class="box-content">
+                <h4>Add New Rules</h4>
+                <input type="text" name="rules" class="hidden" id="rules" data-ng-model="vm.hackathon.rules"/>
+                <div class="parent-rule" data-ng-repeat="rule in vm.hackathon.rules track by $index">
+                    <div class="row">
+                        <div class="small-2 columns">
+                            <label class="text-right middle">Name Of Rule</label>
+                        </div>
+                        <div class="small-6 end columns">
+                            <input type="text" placeholder=""
+                                   data-ng-model="vm.hackathon.rules[$index].name"/>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="small-2 columns">
+                            <label class="text-right middle">Description</label>
+                        </div>
+                        <div class="small-6 end columns">
+                            <textarea placeholder="Enter your answer here..."
+                                      data-ng-model="vm.hackathon.rules[$index].description"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-2 columns">
+                            <label class="text-right middle">Status</label>
+                        </div>
+                        <div class="small-6 columns">
+                            <label>
+                                <select name="faq-{{vm.hackathon.rules[$index].id}}" data-ng-model="vm.hackathon.rules[$index].status">
+                                    <option value="1" ng-selected="vm.hackathon.rules[$index].status == 1">Enable</option>
+                                    <option value="0" ng-selected="vm.hackathon.rules[$index].status == 0">Disable</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="small-2 end columns">
+                            <button type="button" class="button" data-ng-click="vm.removeRule(rule)">Remove
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="clearfix text-right">
+                    <button type="button" class="button" data-ng-click="vm.addMoreRule()">Add more
+                        Rule</button>
+                </div>
+            </div>
+
+            <div class="clearfix" style="margin-top: 10px">
+                <div class="button-group small float-right">
+                    <a class="button secondary">Cancel</a>
+                    <button type="submit" class="button">Save Changes</button>
+                </div>
+            </div>
+        </div>
+</form>

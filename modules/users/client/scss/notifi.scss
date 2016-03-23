@@ -1,0 +1,87 @@
+.page-notification {
+    border-width: 2px;
+    border-top-width: 6px;
+    border-color: #4c535a;
+    border-style: solid;
+    background-color: #FFF;
+    display: none;
+    position: absolute;
+    right: 0;
+    z-index: 9;
+    min-height: 200px;
+    min-width: 250px;
+    max-height: 310px;
+    overflow: hidden;
+    box-shadow: 0 0 6px #4c535a;
+
+    .notif-scroller {
+        height: 292px;
+        overflow-y: hidden;
+        position: relative;
+    }
+
+    &.active {
+        display: block;
+    }
+
+    .in-notif {
+        position: relative;
+        min-height: 100px;
+        width: 100%;
+        display: block;
+
+        .loading-notif {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        a {
+            color: #333;
+        }
+    }
+
+    .connection-company-list {
+        list-style: none;
+        padding: 10px;
+        margin: 0 auto;
+
+        > li {
+            padding: 8px 0;
+            min-height: 50px;
+            border-bottom: 1px solid #DDD;
+
+            &:first-child {
+                padding-top: 0;
+            }
+
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+
+        .connection-company-info {
+            padding: 0 6px;
+        }
+
+        .company-avatar {
+            max-width: 50px;
+        }
+
+        .company-profile-image {
+            max-width: 40px;
+            max-height: 40px;
+        }
+
+        .company-headline {
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .company-secondary-headline {
+            font-size: 13px;
+            font-weight: normal;
+        }
+    }
+}

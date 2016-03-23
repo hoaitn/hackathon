@@ -1,0 +1,47 @@
+<form ng-submit="addEvent()" role="form">
+    <div class="modal-header">
+        <h3 class="modal-title">Create new shceduler!</h3>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label>Event name</label>
+            <input type="text" placeholder="Event name" class="form-control" ng-model="vm.newEvent.title" ng-required="true">
+        </div>
+        <div class="row">
+            <label>Date start</label>
+            <div class="col-md-8 col-lg-8">
+                <div class="input-group">
+                    <div class="input-group-button">
+                        <button type="button" class="button secondary" ng-click="vm.start_opened = !vm.start_opened"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </div>
+                    <input type="text" class="input-group-field" uib-datepicker-popup ng-model="vm.newEvent.start" is-open="vm.start_opened" datepicker-options="vm.dateOptions" ng-required="true" close-text="Close" />
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-4">
+                <uib-timepicker class="custom-time-picker" ng-model="vm.newEvent.startTime" hour-step="1" minute-step="10" show-meridian="false" ng-required="true"></uib-timepicker>
+            </div>
+        </div>
+        <div class="row">
+            <label>Date end</label>
+            <div class="col-md-8 col-lg-8">
+                <div class="input-group">
+                    <div class="input-group-button">
+                        <button type="button" class="button secondary" ng-click="vm.end_opened = !vm.end_opened"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </div>
+                    <input type="text" class="input-group-field" uib-datepicker-popup ng-model="vm.newEvent.end" is-open="vm.end_opened" datepicker-options="vm.dateOptions" ng-required="true" close-text="Close" />
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-4">
+                <uib-timepicker class="custom-time-picker" ng-model="vm.newEvent.endTime" hour-step="1" minute-step="10" show-meridian="false" ng-required="true"></uib-timepicker>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>URL</label>
+            <input type="text" class="form-control" ng-model="vm.newEvent.url">
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="submit">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</form>

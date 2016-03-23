@@ -1,0 +1,14 @@
+<div zf-panel class="panel-fixed" id="fixed-panel" position="left">
+    <a zf-close class="close-button">×</a>
+
+    <ul>
+        <li><a href="">About</a></li>
+        <li><a href="">Hackathon</a></li>
+        <li><a href="">Company</a></li>
+        <li ui-sref-active="active" ng-hide="authentication.user">
+            <a ui-sref="authentication.signin">Login</a>
+        </li>
+    </ul>
+
+
+</div>

@@ -1,0 +1,116 @@
+/**
+ * Foundation for Sites by ZURB
+ * Version 6.1.2
+ * foundation.zurb.com
+ * Licensed under MIT Open Source
+ */
+.input-inside-icon {
+  position: relative; }
+  .input-inside-icon .inside-icon {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    padding-right: 12px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center; }
+  .input-inside-icon input {
+    padding-right: 40px; }
+
+.social-button {
+  max-width: 250px;
+  padding: 10px;
+  color: #FFF; }
+
+.social-facebook {
+  background-color: #4e69a2; }
+
+.social-linkedin {
+  background-color: #0077B5; }
+
+.login-group-option {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
+
+@media screen and (min-width: 40em) {
+  .auth-left {
+    background-color: #DDD;
+    height: 100%;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1; }
+  .auth-right {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1; }
+  .login-group-option {
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: end;
+    -webkit-align-items: flex-end;
+        -ms-flex-align: end;
+            align-items: flex-end; }
+    .login-group-option .button {
+      margin-bottom: 0; } }
+
+@media screen and (min-width: 0em) and (max-width: 39.9375em) {
+  .auth-left {
+    padding-top: 30px;
+    padding-bottom: 40px; }
+  .auth-page {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column; }
+  .login-group-option {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center; }
+  .line-or {
+    display: block; } }
+
+.line-or {
+  width: 100%;
+  position: relative;
+  text-align: center;
+  margin: 15px auto; }
+  .line-or::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    left: 0;
+    top: 50%;
+    background-color: #DDD;
+    z-index: -1; }
+  .line-or span {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #fefefe; }

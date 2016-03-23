@@ -1,0 +1,137 @@
+/**
+ * Foundation for Sites by ZURB
+ * Version 6.1.2
+ * foundation.zurb.com
+ * Licensed under MIT Open Source
+ */
+.main-header .top-bar {
+  background: none;
+  padding: 0px;
+  z-index: 1;
+  position: absolute;
+  width: 100%; }
+  @media screen and (min-width: 0em) and (max-width: 39.9375em) {
+    .main-header .top-bar .title-bar {
+      background: #fefefe; } }
+  .main-header .top-bar .title-bar .title-bar-title {
+    color: #000; }
+  .main-header .top-bar .top-bar-right {
+    margin-right: 60px;
+    margin-top: 30px; }
+  .main-header .top-bar .menu-icon::after {
+    background: #333333;
+    box-shadow: 0 7px 0 #333333, 0 14px 0 #333333; }
+  .main-header .top-bar ul {
+    background: none; }
+    .main-header .top-bar ul li a {
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 14px; }
+      .main-header .top-bar ul li a:hover {
+        color: #2199e8; }
+
+/* Left menu for responsive */
+.panel-fixed ul {
+  margin-top: 30px;
+  margin-left: 0px; }
+  .panel-fixed ul li {
+    list-style: none;
+    padding: 10px;
+    border-bottom: 1px solid #F5F5F5;
+    cursor: pointer;
+    padding-left: 30px; }
+    .panel-fixed ul li a {
+      text-transform: uppercase;
+      font-size: 13px; }
+    .panel-fixed ul li:hover {
+      background: #2199e8; }
+      .panel-fixed ul li:hover a {
+        color: #fff; }
+
+/* Main Footer */
+.footer-wrapper {
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+  margin-bottom: 10px; }
+  .footer-wrapper .footer-logo {
+    margin-top: -10px;
+    margin-bottom: 10px; }
+    .footer-wrapper .footer-logo img {
+      cursor: pointer; }
+  .footer-wrapper .ft-center ul li {
+    margin-right: 10px;
+    margin-left: 10px;
+    display: inline-block; }
+    .footer-wrapper .ft-center ul li .fa {
+      cursor: pointer; }
+
+.section-home {
+  clear: both; }
+  .section-home .main-slider .orbit-bullets {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    margin-left: 20px;
+    -webkit-transform: translate(0, -50%);
+    transform: translate(0, -50%); }
+    .section-home .main-slider .orbit-bullets button {
+      display: block;
+      width: 7px;
+      height: 7px;
+      color: #212121;
+      margin-bottom: 15px;
+      margin-left: 1px; }
+      .section-home .main-slider .orbit-bullets button.is-active {
+        background: #fff;
+        width: 9px;
+        height: 9px;
+        margin-left: 0px; }
+  .section-home .inner-content .main-tabs {
+    margin-top: -50px;
+    z-index: 9;
+    position: relative;
+    padding: 0px 50px 50px;
+    background: #fff;
+    border-radius: 5px; }
+    @media screen and (min-width: 0em) and (max-width: 39.9375em) {
+      .section-home .inner-content .main-tabs {
+        margin-top: 0px;
+        border-radius: 0px; } }
+    .section-home .inner-content .main-tabs .top-tabs .tabs {
+      border: none; }
+    .section-home .inner-content .main-tabs .top-tabs .tabs-title a {
+      background: none;
+      text-transform: uppercase;
+      font-size: 14px;
+      letter-spacing: 1px;
+      color: #6D6C6C;
+      padding-left: 0px;
+      padding-right: 0px;
+      margin-right: 40px; }
+    .section-home .inner-content .main-tabs .top-tabs .tabs-title.is-active a {
+      color: #2199e8;
+      border-bottom: 2px solid; }
+    .section-home .inner-content .main-tabs .bottom-tabs .tabs-content {
+      border: none; }
+      .section-home .inner-content .main-tabs .bottom-tabs .tabs-content .tabs-panel {
+        padding-left: 0px;
+        padding-right: 0px; }
+    .section-home .inner-content .main-tabs .bottom-tabs .box-wrapper .column .box-item {
+      padding: 0px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      margin-bottom: 30px; }
+      .section-home .inner-content .main-tabs .bottom-tabs .box-wrapper .column .box-item:hover, .section-home .inner-content .main-tabs .bottom-tabs .box-wrapper .column .box-item:focus {
+        box-shadow: 0 0 6px 1px rgba(33, 153, 232, 0.5); }
+      .section-home .inner-content .main-tabs .bottom-tabs .box-wrapper .column .box-item img {
+        max-width: 100%;
+        width: 100%; }
+      .section-home .inner-content .main-tabs .bottom-tabs .box-wrapper .column .box-item .bottom-item {
+        padding: 10px;
+        font-size: 13px; }
+        .section-home .inner-content .main-tabs .bottom-tabs .box-wrapper .column .box-item .bottom-item .time {
+          margin-bottom: 5px; }
+    .section-home .inner-content .main-tabs .bottom-tabs .box-loading {
+      text-align: center;
+      margin-bottom: 10px; }

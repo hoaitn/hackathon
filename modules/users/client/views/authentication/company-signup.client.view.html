@@ -1,0 +1,97 @@
+<div ng-controller="AuthenticationController" class="flex display-flex flex-column flex-justify-center" ng-init="account_type='company'">
+    <div class="small-offset-1 large-offset-2 hide-for-small-only">
+        <h3>Create company</h3>
+        <p>Already part of the community</p>
+        <p><a ui-sref="authentication.signin">Quick login</a> and be wow'ed</p>
+    </div>
+    <div class="small-offset-1 small-10 large-offset-2 large-8">
+        <form name="userForm" ng-submit="signup(userForm.$valid)" class="signin" novalidate autocomplete="false">
+            <fieldset>
+                <div class="form-group" show-errors>
+                    <div class="input-inside-icon">
+                        <div class="inside-icon">
+                            <i class="fa fa-user"></i>
+                        </div>
+                        <input type="text" id="fullName" name="fullName" class="form-control" ng-model="credentials.fullName" placeholder="Full Name" required>
+                    </div>
+                    <div ng-messages="userForm.fullName.$error" role="alert">
+                        <p class="help-block error-text alert" ng-message="required">Full name is required.</p>
+                    </div>
+                </div>
+                <div class="form-group" show-errors>
+                    <div class="input-inside-icon">
+                        <div class="inside-icon">
+                            <i class="fa fa-envelope"></i>
+                        </div>
+                        <input type="email" id="email" name="email" class="form-control" ng-model="credentials.email" placeholder="Email" required>
+                    </div>
+                    <div ng-messages="userForm.email.$error" role="alert">
+                        <p class="help-block error-text alert" ng-message="required">Email address is required.</p>
+                        <p class="help-block error-text alert" ng-message="email">Email address is invalid.</p>
+                    </div>
+                </div>
+                <div class="form-group" show-errors>
+                    <div class="input-inside-icon">
+                        <div class="inside-icon">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <input type="text" id="mobile" name="mobile" class="form-control" ng-model="credentials.mobile" placeholder="Mobile" required>
+                    </div>
+                    <div ng-messages="userForm.mobile.$error" role="alert">
+                        <p class="help-block error-text alert" ng-message="required">Mobile is required.</p>
+                    </div>
+                </div>
+                <div class="form-group" show-errors>
+                    <div class="input-inside-icon">
+                        <div class="inside-icon">
+                            <i class="fa fa-globe"></i>
+                        </div>
+                        <input type="text" id="website" name="website" class="form-control" ng-model="credentials.website" placeholder="Website" required>
+                    </div>
+                    <div ng-messages="userForm.website.$error" role="alert">
+                        <p class="help-block error-text alert" ng-message="required">Website is required.</p>
+                    </div>
+                </div>
+                <div class="form-group" show-errors>
+                    <div class="input-inside-icon">
+                        <div class="inside-icon">
+                            <i class="fa fa-unlock"></i>
+                        </div>
+                        <input type="password" id="password" name="password" class="form-control" ng-model="credentials.password" placeholder="Password" minlength="6" required>
+                    </div>
+                    <div ng-messages="userForm.password.$error" role="alert">
+                        <p class="help-block error-text alert" ng-message="required">Password is required.</p>
+                        <p class="help-block error-text alert" ng-message="minlength">Password is required 6 chaset.</p>
+                    </div>
+                </div>
+                <div class="form-group" show-errors>
+                    <div class="input-inside-icon">
+                        <div class="inside-icon">
+                            <i class="fa fa-tags"></i>
+                        </div>
+                        <tags-input name="interest" replace-spaces-with-dashes="false" spellcheck="false" data-ng-model="credentials.interest" display-property="name" placeholder="Interest">
+                            <auto-complete source="interestList" display-property="name"></auto-complete>
+                        </tags-input>
+                    </div>                    
+                </div>
+                <div class="form-group" show-errors>                
+                    <input id="policy" name="policy" type="checkbox" ng-model="credentials.policy" required> <span for="policy">I accept the User Agreement and Privacy policy</span>
+                    <div ng-messages="userForm.policy.$error" role="alert">
+                        <p class="help-block error-text alert" ng-message="required">Policy is required.</p>
+                    </div>
+                </div>
+                <div class="login-group-option">
+                    <button type="submit" class="button primary" ng-disabled="userForm.$invalid">Create company</button>   
+                    <a ui-sref="authentication.signup">Register user account</a>
+                    <a class="show-for-small-only" ui-sref="authentication.signin">Login your account</a>
+                </div>
+                <div ng-show="success" class="text-center text-success">
+                    <strong ng-bind="success"></strong>
+                </div>
+                <div ng-show="error" class="text-center text-danger">
+                    <strong ng-bind="error"></strong>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

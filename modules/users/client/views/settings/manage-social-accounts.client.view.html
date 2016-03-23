@@ -1,0 +1,39 @@
+<section class="row" ng-controller="SocialAccountsController">
+    <h3 class="col-md-12 text-center" ng-show="hasConnectedAdditionalSocialAccounts()">Connected social accounts:</h3>
+    <div class="col-md-12 text-center">
+        <div ng-repeat="(providerName, providerData) in user.additionalProvidersData" class="social-account-container">
+            <img ng-src="/modules/users/client/img/buttons/{{providerName}}.png">
+            <a class="button alert btn-remove-account" ng-click="removeUserSocialAccount(providerName)">
+                <i class="fa fa-trash"></i>
+            </a>
+        </div>
+    </div>
+    <h3 class="col-md-12 text-center" ng-show="hasConnectedAdditionalSocialAccounts()">Unconnected social accounts:</h3>
+    <div class="col-md-12 text-center">
+        <div class="social-account-container" ng-hide="isConnectedSocialAccount('facebook')">
+            <img ng-src="/modules/users/client/img/buttons/facebook.png">
+            <a class="button success btn-remove-account" href="/api/auth/facebook" target="_self">
+                <i class="fa fa-plus"></i>
+            </a>
+        </div>
+        <div class="social-account-container" ng-hide="isConnectedSocialAccount('twitter')">
+            <img ng-src="/modules/users/client/img/buttons/twitter.png">
+            <a class="button success btn-remove-account" href="/api/auth/twitter" target="_self">
+                <i class="fa fa-plus"></i>
+            </a>
+        </div>
+        <div class="social-account-container" ng-hide="isConnectedSocialAccount('google')">
+            <img ng-src="/modules/users/client/img/buttons/google.png">
+            <a class="button success btn-remove-account" href="/api/auth/google" target="_self">
+                <i class="fa fa-plus"></i>
+            </a>
+        </div>
+        <div class="social-account-container" ng-hide="isConnectedSocialAccount('linkedin')">
+            <img ng-src="/modules/users/client/img/buttons/linkedin.png">
+            <a class="button success btn-remove-account" href="/api/auth/linkedin" target="_self">
+                <i class="fa fa-plus"></i>
+            </a>
+        </div>
+    </div>
+    <p class="text-danger text-center" ng-bind="error"></p>
+</section>

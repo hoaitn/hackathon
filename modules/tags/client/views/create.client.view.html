@@ -1,0 +1,20 @@
+<form method="POST" name="tagForm" class="form-horizontal" role="form" data-ng-submit="save()" novalidate autocomplete="false">
+    <div class="form-group">
+        <legend>Create Tag</legend>
+    </div>
+    <div class="form-group">
+        <label for="input-id" class="col-sm-2">Name</label>
+        <input type="text" name="name" class="form-control" data-ng-model="tag.name" required minlength="3">
+        <div ng-messages="tagForm.name.$error" role="alert" ng-show="tagForm.$submitted && tagForm.name.$invalid">
+            <div class="text-alert" ng-message="required">Please enter a value for this field.</div>
+            <div class="text-alert" ng-message="minlength">Field value is short.</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="input-id" class="col-sm-2">Slug</label>
+        <input type="text" class="form-control" data-ng-model="tag.slug">
+    </div>
+    <div class="form-group">
+        <button type="submit" class="button">Create</button>
+    </div>
+</form>

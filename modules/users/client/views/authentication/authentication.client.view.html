@@ -1,0 +1,28 @@
+<section ng-controller="AuthenticationController" class="expanded row full-height auth-page display-flex">
+    <div class="large-6 column auth-left display-flex flex-column layout-center">
+        <div class="text-center logo-div">
+            <a ui-sref="home" title="Home">
+                <img src="modules/core/client/img/brand/logo-medium.png">
+            </a>
+        </div>
+        <h3 class="text-center">Let's cocreate</h3>
+        <h4 class="text-center">Register with social media</h4>
+        <div>
+            <div ng-click="callOauthProvider('/api/auth/facebook')" role="button" class="social-button social-facebook text-left">
+                <i class="fa fa-facebook"></i> &nbsp; Register with Facebook
+            </div>
+            <br>
+            <div ng-click="callOauthProvider('/api/auth/facebook')" role="button" class="social-button social-linkedin text-left">
+                <i class="fa fa-linkedin"></i> &nbsp; Register with LinkedIn
+            </div>
+        </div>
+        <!-- <img ng-click="callOauthProvider('/api/auth/facebook')" ng-src="/modules/users/client/img/buttons/facebook.png" role="button">
+            <img ng-click="callOauthProvider('/api/auth/twitter')" ng-src="/modules/users/client/img/buttons/twitter.png" role="button">
+            <img ng-click="callOauthProvider('/api/auth/google')" ng-src="/modules/users/client/img/buttons/google.png" role="button">
+            <img ng-click="callOauthProvider('/api/auth/linkedin')" ng-src="/modules/users/client/img/buttons/linkedin.png" role="button"> -->
+    </div>
+    <div class="show-for-small-only line-or">
+        <span>OR</span>
+    </div>
+    <div ui-view class="large-6 column auth-right display-flex"></div>
+</section>

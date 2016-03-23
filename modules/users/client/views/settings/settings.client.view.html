@@ -1,0 +1,23 @@
+<section>
+    <div class="row">
+        <nav class="small-3 large-3 columns">
+            <ul class="vertical menu settings-aside">
+                <li ui-sref-active="active">
+                    <a ui-sref="settings.profile">Edit Profile</a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="settings.picture">Change Profile Picture</a>
+                </li>
+                <li ui-sref-active="active" ng-show="user.provider === 'local'">
+                    <a ui-sref="settings.password">Change Password</a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="settings.accounts">Manage Social Accounts</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="small-9 large-8 settings-view columns">
+            <div ui-view></div>
+        </div>
+    </div>
+</section>

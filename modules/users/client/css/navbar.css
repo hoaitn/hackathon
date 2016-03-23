@@ -1,0 +1,25 @@
+/**
+ * Foundation for Sites by ZURB
+ * Version 6.1.2
+ * foundation.zurb.com
+ * Licensed under MIT Open Source
+ */
+.header-user-auth {
+  margin-bottom: 15px; }
+
+.user-navbar {
+  background-color: #2e5896; }
+  .user-navbar .user-navbar-menu a {
+    color: #FFF; }
+  .user-navbar .user-navbar-menu ul a {
+    color: #333; }
+  .user-navbar .user-navbar-menu .text-notif .icon {
+    font-size: 25px; }
+  .user-navbar .user-navbar-menu .notif-count {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #ec5840;
+    font-size: 12px;
+    border-radius: 2px;
+    padding: 2px 4px; }

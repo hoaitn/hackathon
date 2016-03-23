@@ -1,0 +1,74 @@
+<div class="session-box">
+    <!--Social Media Handles-->
+    <div class="box-content">
+        <h4>Social Media Handles</h4>
+        <div class="row">
+            <div class="small-2 columns">
+                <label class="text-right middle">Facebook</label>
+            </div>
+            <div class="small-6 end columns">
+                <input type="text" ng-model="vm.socials.facebook" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-2 columns">
+                <label class="text-right middle">Twitter</label>
+            </div>
+            <div class="small-6 end columns">
+                <input type="text" ng-model="vm.socials.twitter"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-2 columns">
+                <label class="text-right middle">Google Plus</label>
+            </div>
+            <div class="small-6 end columns">
+                <input type="text" ng-model="vm.socials.google"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-2 columns">
+                <label class="text-right middle">LinkedIn</label>
+            </div>
+            <div class="small-6 end columns">
+                <input type="text" ng-model="vm.socials.linkedin" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-2 columns">
+                <label class="text-right middle">Other</label>
+            </div>
+            <div class="small-6 end columns">
+                <input type="text" ng-model="vm.socials.other"/>
+            </div>
+        </div>
+    </div>
+    <div class="box-content">
+        <h4>Agenda</h4>
+        <div class="row">
+            <div class="large-4 columns">
+                <div ui-calendar="vm.uiConfig.month" class="calendar" ng-model="vm.eventSources" calendar="full_scheduler"></div>
+                <h2>Events</h2>
+                <div class="button-group">
+                    <button class="button" ng-click="vm.addEvent()"><i class="fa fa-plus"></i></button>
+                </div>                
+                <ul>
+                    <li ng-repeat="item in vm.events">
+                        <div>{{item.title}}</div>
+                        <span>{{item.start | date:short}} - {{item.end | date:short}}</span>
+                        <button type="button" class="button alert" ng-click="vm.removeEvent(item)"><i class="fa fa-trash"></i></button>
+                    </li>
+                </ul>
+            </div>
+            <div class="large-8 columns">
+                <div ui-calendar="vm.uiConfig.calendar" class="calendar" ng-model="vm.eventSources" calendar="scheduler"></div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix" style="margin-top: 10px">
+        <div class="button-group small float-right">
+            <a class="button secondary">Cancel</a>
+            <button type="button" ng-click="vm.saveChange()" class="button">Save Changes</button>
+        </div>
+    </div>
+</div>

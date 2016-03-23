@@ -1,0 +1,104 @@
+<form name="hackathonsCtr.form.tab1Form" class="form-horizontal" ng-submit="hackathonsCtr.saveTab(hackathonsCtr.form.tab1Form.$valid)" novalidate>
+    <div class="row">
+        <div class="small-2 columns">
+            <label for="name" class="text-right middle">Name</label>
+        </div>
+        <div class="small-6 columns form-group end" show-errors>
+            <input type="text" name="name" id="name" ng-model="hackathonsCtr.hackathon.name"
+                   placeholder="Enter your name here ..." required>
+            <div ng-messages="hackathonsCtr.form.tab1Form.name.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">Name Hackathon is required.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="small-2 columns">
+            <label for="tagline" class="text-right middle">Tagline</label>
+        </div>
+        <div class="small-6 columns form-group end" show-errors>
+            <input type="text" name="tagline" id="tagline" ng-model="hackathonsCtr.hackathon.tagline" required="">
+            <div ng-messages="hackathonsCtr.form.tab1Form.tagline.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">Tagline is required.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="small-2 columns">
+            <label for="url" class="text-right middle">Url</label>
+        </div>
+        <div class="small-6 columns form-group end" show-errors>
+            <input type="url" name="url" id="url" ng-model="hackathonsCtr.hackathon.url" placeholder="http:\\..." required >
+            <div ng-messages="hackathonsCtr.form.tab1Form.url.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">URL is required.</p>
+                <p class="help-block error-text" ng-message="url">Not valid url.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="small-2 columns">
+            <label for="contact_email" class="text-right middle">Contact Email</label>
+        </div>
+        <div class="small-6 columns form-group end" show-errors>
+            <input type="email" name="contact_email" id="contact_email" ng-model="hackathonsCtr.hackathon.contact_email"
+                   placeholder="Enter Email..." required>
+            <div ng-messages="hackathonsCtr.form.tab1Form.contact_email.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">Contact Email is required.</p>
+                <p class="help-block error-text" ng-message="email">Not valid email.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="small-2 columns">
+            <label class="text-right middle">Time Zone</label>
+        </div>
+        <div class="small-6 columns form-group end">
+            <label>
+                <select name="time_zone" ng-model="hackathonsCtr.hackathon.time_zone">
+                    <option value="">Select Time zone</option>
+                    <option value="husker">(UTC + 7:00) Bangkok, Ha Noi, Jakarta</option>
+                    <option value="starbuck">Starbuck</option>
+                    <option value="hotdog">Hot Dog</option>
+                    <option value="apollo">Apollo</option>
+                </select>
+            </label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="small-2 columns">
+            <label for="location_name" class="text-right middle">Location Name</label>
+        </div>
+        <div class="small-6 end columns form-group" show-errors>
+            <input type="text" name="location_name" id="location_name" ng-model="hackathonsCtr.hackathon.location_name"
+                   required>
+            <div ng-messages="hackathonsCtr.form.tab1Form.location_name.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">Location Name is required.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="small-2 columns">
+            <label for="address" class="text-right middle">Address</label>
+        </div>
+        <div class="small-6 end columns form-group" show-errors>
+            <input type="text" id="address" name="address" ng-model="hackathonsCtr.hackathon.address" required>
+            <div ng-messages="hackathonsCtr.form.tab1Form.address.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">Address is required.</p>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix">
+        <div class="small-8 end columns">
+            <div class=" button-group float-right">
+                <a class="secondary button" ng-click="hackathonsCtr.resetForm(hackathonsCtr.form.tab1Form)">Reset</a>
+                <button type="submit" class="button">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+</form>

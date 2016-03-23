@@ -1,0 +1,61 @@
+<div class="top-bar">
+    <div class="title-bar hide-for-medium" data-responsive-toggle="example-menu">
+        <button class="menu-icon" type="button" zf-toggle="fixed-panel"></button>
+        <div class="title-bar-title">Menu</div>
+    </div>
+    <div class="top-bar hide-for-small-only" id="example-menu">
+        <div class="top-bar-right">
+            <ul data-dropdown-foundation>
+                                
+                <li><a ui-sref="hackathons.list">Hackathon</a></li>                
+                <li class="relative" click-outside="vm.clickOut()">
+                    <a role="button" ng-click="vm.toggleNotify = !vm.toggleNotify" class="relative">
+                        <span class="text-notif">
+                            <i class="icon fa fa-globe"></i>                            
+                        </span>
+                        <span class="notif-count" ng-if="vm.invites.length">{{vm.invites.length}}</span>
+                    </a>
+                    <div class="page-notification" data-ng-class="{'active': vm.toggleNotify}">
+                        <div class="in-notif">
+                            <loading class="loading-notif" type="loading" ng-if="loading"></loading>
+                            <perfect-scrollbar class="notif-scroller" wheel-propagation="true" wheel-speed="10" min-scrollbar-length="20">
+                                <ul class="connection-company-list" class="display-flex flex-column" ng-if="!loading">
+                                    <li ng-repeat="item in vm.invites" class="display-flex">
+                                        <div class="company-avatar">
+                                            <a ui-sref="home">
+                                                <img class="company-profile-image" ng-src="{{item.hackathon.imageLogoURL}}">
+                                            </a>
+                                        </div>
+                                        <div class="connection-company-info flex">
+                                            <h5 class="company-headline">
+                                                <a ng-bind="item.hackathon.name">Hackathon</a>
+                                            </h5>
+                                            <!-- <h6 class="company-secondary-headline" ng-bind="item.description">Description</h6> -->
+                                        </div>
+                                        <span role="button" ng-click="vm.accept(item)" class="color-success" style="margin-right: 8px;"><i class="fa fa-check"></i></span>
+                                        <span role="button" ng-click="vm.denied(item)" class="color-alert"><i class="fa fa-trash"></i></span>
+                                    </li>
+                                </ul>
+                            </perfect-scrollbar>
+                        </div>
+                    </div>
+                </li>
+                <li ng-if="authentication.user">
+                    <a role="button">
+                        <img ng-src="{{authentication.user.profileImageURL}}" alt="{{authentication.user.displayName}}" class="header-profile-image" />
+                        <span ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
+                    </a>
+                    <ul class="menu horizontal" role="menu">
+                        <li ui-sref-active="active" ng-repeat="item in accountMenu.items">
+                            <a ui-sref="{{item.state}}" ng-bind="item.title"></a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="/api/auth/signout" target="_self">Signout</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

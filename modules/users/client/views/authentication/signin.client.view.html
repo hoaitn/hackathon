@@ -1,0 +1,46 @@
+<div ng-controller="AuthenticationController" class="flex display-flex flex-column flex-justify-center">
+    <div class="small-offset-1 large-offset-2 hide-for-small-only">
+        <h3>Login</h3>
+        <p>Don't have an account?</p>
+        <p><a ui-sref="authentication.signup" title="Create an account">Create an account</a>, it will change your life!</p>
+        <p>Are you a company? <a ui-sref="authentication.company-signup" title="Join the innovation">Join the innovation!</a></p>
+    </div>
+    <div class="small-offset-1 small-10 large-offset-2 large-8">
+        <form name="userForm" ng-submit="signin(userForm.$valid)" class="signin" novalidate autocomplete="off">
+            <fieldset>
+                <div class="form-group" show-errors>
+                    <div class="input-inside-icon">
+                        <div class="inside-icon">
+                            <i class="fa fa-envelope"></i>
+                        </div>
+                        <input type="text" id="email" name="email" class="form-control" ng-model="credentials.email" placeholder="Email" lowercase required>
+                    </div>
+                    <div ng-messages="userForm.email.$error" role="alert">
+                        <p class="help-block error-text" ng-message="required">Email is required.</p>
+                    </div>
+                </div>
+                <div class="form-group" show-errors>
+                    <div class="input-inside-icon">
+                        <div class="inside-icon">
+                            <i class="fa fa-unlock"></i>
+                        </div>
+                        <input type="password" id="password" name="password" class="form-control" ng-model="credentials.password" placeholder="Password" required>
+                    </div>
+                    <div ng-messages="userForm.password.$error" role="alert">
+                        <p class="help-block error-text" ng-message="required">Password is required.</p>
+                    </div>
+                </div>
+                <div class="login-group-option">
+                    <button type="submit" class="button primary" ng-disabled="userForm.$invalid">Sign in</button>   
+                    <a class="show-for-small-only" ui-sref="authentication.signup">Create your account</a>
+                    <a ui-sref="password.forgot">Lost your password?</a>
+                </div>
+                <div class="text-center form-group">
+                </div>
+                <uib-alert type="danger" ng-show="error" class="text-center text-danger">
+                    <span ng-bind="error"></span>
+                </uib-alert>
+            </fieldset>
+        </form>
+    </div>
+</div>

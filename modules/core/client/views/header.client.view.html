@@ -1,0 +1,33 @@
+<div class="top-bar" ng-controller="HeaderController">
+    <div class="title-bar hide-for-medium" data-responsive-toggle="example-menu">        
+        <button class="menu-icon" type="button" zf-toggle="fixed-panel"></button>
+        <div class="title-bar-title">Menu</div>
+    </div>
+    <div class="top-bar hide-for-small-only" id="example-menu">
+        <div class="top-bar-right">
+            <ul data-dropdown-foundation>
+                <li><a href="#">About</a></li>
+                <li><a href="/hackathons">Hackathon</a></li>
+                <li><a href="#">Company</a></li>
+                <li ui-sref-active="active" ng-hide="authentication.user">
+                    <a ui-sref="authentication.signin">Login</a>
+                </li>
+                <li ng-if="authentication.user">
+                    <a role="button">
+                        <img ng-src="{{authentication.user.profileImageURL}}" alt="{{authentication.user.displayName}}" class="header-profile-image" />
+                        <span ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
+                    </a>
+                    <ul class="menu horizontal" role="menu">
+                        <li ui-sref-active="active" ng-repeat="item in accountMenu.items">
+                            <a ui-sref="{{item.state}}" ng-bind="item.title"></a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="/api/auth/signout" target="_self">Signout</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

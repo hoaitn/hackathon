@@ -1,0 +1,43 @@
+<section class="row">
+    <div class="row">
+        <div class="large-6 column">
+            <h1 ng-bind="user.displayName"></h1>
+        </div>
+        <div class="large-4 column">
+            <a class="button primary" ui-sref="admin.user-edit({userId: user._id})">
+                <i class="fa fa-pencil"></i>
+            </a>
+            <a class="button alert" ng-click="remove();" ng-if="user._id !== authentication.user._id">
+                <i class="fa fa-trash"></i>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-8">
+            <div class="row">
+                <div class="small-3 columns"><strong>Full Name</strong></div>
+                <div class="small-9 columns" ng-bind="user.displayName"></div>
+            </div>            
+            <hr/>
+            <div class="row">
+                <div class="small-3 column"><strong>Email</strong></div>
+                <div class="small-9 column" ng-bind="user.email"></div>
+            </div>
+            <hr/>
+            <div class="row">
+                <div class="small-3 column"><strong>Provider</strong></div>
+                <div class="small-9 column" ng-bind="user.provider"></div>
+            </div>
+            <hr/>
+            <div class="row">
+                <div class="small-3 column"><strong>Created</strong></div>
+                <div class="small-9 column">{{user.created | amDateFormat:"MM/DD/YYYY, HH:mm:ss"}}</div>
+            </div>
+            <hr/>
+            <div class="row">
+                <div class="small-3 column"><strong>Roles</strong></div>
+                <div class="small-9 column" ng-bind="user.roles"></div>
+            </div>
+        </div>
+    </div>
+</section>

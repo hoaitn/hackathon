@@ -1,0 +1,9 @@
+@import "foundation";
+
+.settings-aside {
+    li {
+        &:hover {
+            background-color: $medium-gray;
+        }
+    }
+}

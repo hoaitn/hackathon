@@ -1,0 +1,59 @@
+.page-notification {
+  border-width: 2px;
+  border-top-width: 6px;
+  border-color: #4c535a;
+  border-style: solid;
+  background-color: #FFF;
+  display: none;
+  position: absolute;
+  right: 0;
+  z-index: 9;
+  min-height: 200px;
+  min-width: 250px;
+  max-height: 310px;
+  overflow: hidden;
+  box-shadow: 0 0 6px #4c535a; }
+  .page-notification .notif-scroller {
+    height: 292px;
+    overflow-y: hidden;
+    position: relative; }
+  .page-notification.active {
+    display: block; }
+  .page-notification .in-notif {
+    position: relative;
+    min-height: 100px;
+    width: 100%;
+    display: block; }
+    .page-notification .in-notif .loading-notif {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      -webkit-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%); }
+    .page-notification .in-notif a {
+      color: #333; }
+  .page-notification .connection-company-list {
+    list-style: none;
+    padding: 10px;
+    margin: 0 auto; }
+    .page-notification .connection-company-list > li {
+      padding: 8px 0;
+      min-height: 50px;
+      border-bottom: 1px solid #DDD; }
+      .page-notification .connection-company-list > li:first-child {
+        padding-top: 0; }
+      .page-notification .connection-company-list > li:last-child {
+        border-bottom: none; }
+    .page-notification .connection-company-list .connection-company-info {
+      padding: 0 6px; }
+    .page-notification .connection-company-list .company-avatar {
+      max-width: 50px; }
+    .page-notification .connection-company-list .company-profile-image {
+      max-width: 40px;
+      max-height: 40px; }
+    .page-notification .connection-company-list .company-headline {
+      font-size: 13px;
+      font-weight: bold; }
+    .page-notification .connection-company-list .company-secondary-headline {
+      font-size: 13px;
+      font-weight: normal; }

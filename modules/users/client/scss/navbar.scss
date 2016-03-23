@@ -1,0 +1,37 @@
+@import "foundation";
+
+.header-user-auth {
+    margin-bottom: 15px;
+}
+
+.user-navbar {
+    background-color: #2e5896;
+
+    .user-navbar-menu {
+        a {
+            color: #FFF;
+        }
+
+        ul {
+            a {
+                color: #333;
+            }
+        }
+
+        .text-notif {
+            .icon {
+                font-size: 25px;
+            }
+        }
+
+        .notif-count {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: $alert-color;
+            font-size: 12px;
+            border-radius: 2px;
+            padding: 2px 4px;
+        }
+    }
+}

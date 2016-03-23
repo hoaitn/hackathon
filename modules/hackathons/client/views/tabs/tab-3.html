@@ -1,0 +1,207 @@
+<div class="session-box box-design">
+    <h3 class="">SUBMISSIONS</h3>
+    <!--Eligibility-->
+    <div class="box-content">
+        <h4>Eligibility</h4>
+        <div class="row">
+            <div class="small-2 columns">
+                <div class="text-left">Who can participate</div>
+            </div>
+            <div class="small-6 end columns">
+                <label ng-repeat="item in vm.submissions.eligibility">
+                    <select ng-model="item.value" ng-options="en.id as en.name for en in eligibility"></select>
+                </label>
+                <div class="clearfix" style="margin-top: 10px">
+                    <div class="button-group small float-right">
+                        <button type="button" ng-click="vm.addEligibility()" class="button">Add more...</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Submission requirements-->
+    <div class="box-content">
+        <h4>Submission requirements</h4>
+        <div class="row">
+            <div class="small-2 columns">
+                <label class="text-right middle">Requirement</label>
+            </div>
+            <div class="small-6 end columns">
+                <textarea ng-model="vm.submissions.requirement" id="" cols="30" rows="10" placeholder="Enter your requirement here..."></textarea>
+                <!-- <div class="clearfix" style="margin-top: 10px">
+                    <div class="button-group small float-right">
+                        <a class="button secondary">Reset</a>
+                        <a class="button">Save</a>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <!--Registration-->
+    <div class="box-content">
+        <h4>Registration</h4>
+        <div class="row">
+            <div class="small-2 columns">
+                <label class="text-right middle">Registration Free</label>
+            </div>
+            <div class="small-4 columns">
+                <input type="text" ng-model="vm.submissions.registration.free" placeholder="" />
+            </div>
+            <div class="small-2 columns end">
+                <label>
+                    <select ng-model="vm.submissions.registration.value">
+                        <option ng-value="1" ng-selected="vm.submissions.registration.value">USD</option>
+                        <option ng-value="2" ng-selected="vm.submissions.registration.value">GBP</option>
+                    </select>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-2 columns">
+                <label class="text-right middle">Registration Free</label>
+            </div>
+            <div class="small-6 end columns end">
+                <div class="small button-group">
+                    <a class="button">Paypal</a>
+                    <a class="button">Visa</a>
+                    <a class="button">Master Card</a>
+                    <a class="button">Stripe</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-2 columns">
+                <label class="text-right middle">Ticket Type</label>
+            </div>
+            <div class="small-6 end columns end">
+                <select ng-model="vm.submissions.registration.ticketType">
+                    <option ng-value="1" ng-selected="vm.submissions.registration.ticketType">Option 1</option>
+                    <option ng-value="2" ng-selected="vm.submissions.registration.ticketType">Option 2</option>
+                    <option ng-value="3" ng-selected="vm.submissions.registration.ticketType">Option 3</option>
+                    <option ng-value="4" ng-selected="vm.submissions.registration.ticketType">Option 4</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-2 columns">
+                <label class="text-right middle">Period</label>
+            </div>
+            <div class="small-3 columns">
+                <div class="row">
+                    <div class="small-3 columns">
+                        <label for="from_date" class="text-right middle">From</label>
+                    </div>
+                    <div class="small-9 columns">
+                        <div class="input-group">
+                            <input uib-datepicker-popup class="input-group-field" type="text" is-open="vm.from_opened" ng-model="vm.submissions.registration.period.from" name="from_date" id="from_date" />
+                            <div class="input-group-btn" ng-click="vm.from_opened = !vm.from_opened">
+                                <button type="button" class="button">
+                                    <i class="glyphicon glyphicon-calendar"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="small-3 columns end">
+                <div class="row">
+                    <div class="small-3 columns">
+                        <label for="to_date" class="text-right middle">To</label>
+                    </div>
+                    <div class="small-9 columns">
+                        <div class="input-group">
+                            <input uib-datepicker-popup class="input-group-field" type="text" is-open="vm.to_opened" ng-model="vm.submissions.registration.period.to" name="from_date" id="from_date" />
+                            <div class="input-group-btn" ng-click="vm.to_opened = !vm.to_opened">
+                                <button type="button" class="button">
+                                    <i class="glyphicon glyphicon-calendar"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Project Submission-->
+    <div class="box-content">
+        <h4>Project Submission</h4>
+        <div class="row">
+            <div class="small-2 columns">
+                <label class="text-right middle">Submit idea/project</label>
+            </div>
+            <div class="small-6 end columns">
+                <input type="radio" class="middle" ng-model="vm.submissions.projectSubmission.submitIdea" name="submit_idea" ng-value="true" id="submitYes" required>
+                <label class="middle" for="submitYes">Yes</label>
+                <input type="radio" class="middle" ng-model="vm.submissions.projectSubmission.submitIdea" name="submit_idea" ng-value="false" id="submitNo">
+                <label class="middle" for="submitNo">No</label>
+            </div>
+        </div>
+        <div class="row" ng-if="vm.submissions.projectSubmission.submitIdea">
+            <div class="small-2 columns">
+                <label class="text-right middle">Submission Requirements</label>
+            </div>
+            <div class="small-6 end columns">
+                <textarea ng-model="vm.submissions.projectSubmission.requirement" cols="30" rows="10" placeholder="Enter your requirement here..."></textarea>                
+            </div>
+        </div>
+        <div class="row" ng-if="vm.submissions.projectSubmission.submitIdea">
+            <div class="small-2 columns">
+                <label class="text-right middle">Period</label>
+            </div>
+            <div class="small-3 columns">
+                <div class="row">
+                    <div class="small-3 columns">
+                        <label for="period_from_date" class="text-right middle">From</label>
+                    </div>
+                    <div class="small-9 columns">
+                        <div class="input-group">
+                            <input uib-datepicker-popup class="input-group-field" type="text" is-open="vm.from_opened1" ng-model="vm.submissions.projectSubmission.period.from" name="from_date" id="from_date" />
+                            <div class="input-group-btn" ng-click="vm.from_opened1 = !vm.from_opened1">
+                                <button type="button" class="button">
+                                    <i class="glyphicon glyphicon-calendar"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="small-3 columns end">
+                <div class="row">
+                    <div class="small-3 columns">
+                        <label for="period_to_date" class="text-right middle">To</label>
+                    </div>
+                    <div class="small-9 columns">
+                        <div class="input-group">
+                            <input uib-datepicker-popup class="input-group-field" type="text" is-open="vm.to_opened1" ng-model="vm.submissions.projectSubmission.period.to" name="from_date" id="from_date" />
+                            <div class="input-group-btn" ng-click="vm.to_opened1 = !vm.to_opened1">
+                                <button type="button" class="button">
+                                    <i class="glyphicon glyphicon-calendar"></i>
+                                </button>
+                            </div>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" ng-if="vm.submissions.projectSubmission.submitIdea">
+            <div class="small-2 columns">
+                <label class="text-right middle">Possibility to upload project</label>
+            </div>
+            <div class="small-6 end columns">
+                <label>
+                    <select name="time_zone" ng-model="vm.submissions.projectSubmission.possibility">
+                        <option>Select status</option>
+                        <option ng-value="1" ng-selected="vm.submissions.projectSubmission.possibility">Enable</option>
+                        <option ng-value="2" ng-selected="vm.submissions.projectSubmission.possibility">Disable</option>
+                    </select>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix" style="margin-top: 10px">
+        <div class="button-group small float-right">
+            <a class="button secondary">Cancel</a>
+            <button type="button" class="button" ng-click="vm.saveSubmission()">Save Changes</button>
+        </div>
+    </div>
+</div>
